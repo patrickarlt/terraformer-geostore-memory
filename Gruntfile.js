@@ -2,7 +2,6 @@ var fs = require('fs');
 
 module.exports = function (grunt) {
   grunt.initConfig({
-    aws: grunt.file.readJSON(process.env.HOME + '/terraformer-s3.json'),
     pkg:   grunt.file.readJSON('package.json'),
 
     meta: {
