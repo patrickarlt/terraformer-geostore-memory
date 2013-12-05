@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 module.exports = function (grunt) {
   grunt.initConfig({
     aws: grunt.file.readJSON(process.env.HOME + '/terraformer-s3.json'),
@@ -97,6 +99,12 @@ module.exports = function (grunt) {
       }
     }
   });
+
+  var awsExists = fs.existsSync(process.env.HOME + '/terraformer-s3.json');
+
+  if (awsExists) {
+    grunt.config.set('aws', grunt.file.readJSON(process.env.HOME + '/terraformer-s3.json'));
+  }
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
